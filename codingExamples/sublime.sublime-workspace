@@ -4,6 +4,74 @@
 		"selected_items":
 		[
 			[
+				"m",
+				"magnitude\tfloat { get; }"
+			],
+			[
+				"Vec",
+				"Vector3\tVector3"
+			],
+			[
+				"vect",
+				"Vector3\tVector3"
+			],
+			[
+				"Sta",
+				"StateController()\tStateController()"
+			],
+			[
+				"p",
+				"position\tVector3 { get; set; }"
+			],
+			[
+				"get",
+				"GetComponent<T>()\tT"
+			],
+			[
+				"ve",
+				"vectorToTarget\tVector3"
+			],
+			[
+				"stat",
+				"StateController\tStateController"
+			],
+			[
+				"v",
+				"vectorToTarget\tVector3"
+			],
+			[
+				"l",
+				"Normalize()\tvoid"
+			],
+			[
+				"s",
+				"SeekTarget\tVector3"
+			],
+			[
+				"cu",
+				"CurrentLocation\tVector3"
+			],
+			[
+				"cont",
+				"controller\tStateController"
+			],
+			[
+				"vec",
+				"Vector3\tVector3"
+			],
+			[
+				"Stat",
+				"StateController\tStateController"
+			],
+			[
+				"Tr",
+				"Transition\tTransition"
+			],
+			[
+				"n",
+				"Length\tint { get; }"
+			],
+			[
 				"ai",
 				"aiActive"
 			],
@@ -48,10 +116,6 @@
 				"StudentData\tStudentData"
 			],
 			[
-				"s",
-				"search\tDictionary<string, StudentData>"
-			],
-			[
 				"D",
 				"Dictionary<\tDictionary<"
 			],
@@ -80,27 +144,54 @@
 			"file": "Assets/scripts/State.cs",
 			"settings":
 			{
-				"buffer_size": 435,
+				"buffer_size": 936,
 				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "sublime.sublime-project",
-			"settings":
-			{
-				"buffer_size": 193,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
+				"line_ending": "Windows"
 			}
 		},
 		{
 			"file": "Assets/scripts/StateController.cs",
 			"settings":
 			{
-				"buffer_size": 435,
+				"buffer_size": 1180,
+				"encoding": "UTF-8 with BOM",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Assets/Scripts/Transition.cs",
+			"settings":
+			{
+				"buffer_size": 218,
+				"encoding": "UTF-8 with BOM",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Assets/Scripts/Actions/MoveToTargets.cs",
+			"settings":
+			{
+				"buffer_size": 730,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/Scripts/Actions/FleeFromTargets.cs",
+			"settings":
+			{
+				"buffer_size": 678,
 				"encoding": "UTF-8 with BOM",
 				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/Scripts/Decision.cs",
+			"settings":
+			{
+				"buffer_size": 133,
+				"encoding": "UTF-8 with BOM",
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -142,10 +233,14 @@
 	},
 	"expanded_folders":
 	[
-		"/C/Users/joe12/Desktop/codingExamples/Assets/Scripts"
+		"/C/Users/joe12/Desktop/unity vc/unity-vc/codingExamples/Assets/Scripts",
+		"/C/Users/joe12/Desktop/unity vc/unity-vc/codingExamples/Assets/Scripts/Actions",
+		"/C/Users/joe12/Desktop/unity vc/unity-vc/codingExamples/Assets/Scripts/Decisions"
 	],
 	"file_history":
 	[
+		"/C/Users/joe12/Desktop/unity vc/unity-vc/codingExamples/Assets/scripts/Actions/moveToTarget.cs",
+		"/C/Users/joe12/Desktop/unity vc/unity-vc/codingExamples/sublime.sublime-project",
 		"/C/Users/joe12/Desktop/codingExamples/codingExamples.sln",
 		"/C/Users/joe12/AppData/Roaming/Sublime Text 3/Packages/OmniSharp/OmniSharpSublime.sublime-settings",
 		"/C/Users/joe12/Desktop/codingExamples/sublime.sublime-project",
@@ -188,7 +283,7 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 5,
 			"sheets":
 			[
 				{
@@ -204,8 +299,8 @@
 						"selection":
 						[
 							[
-								191,
-								191
+								153,
+								153
 							]
 						],
 						"settings":
@@ -220,7 +315,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
@@ -229,49 +324,101 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 435,
+						"buffer_size": 936,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								435,
-								435
+								71,
+								20
+							]
+						],
+						"settings":
+						{
+							"oops":
+							{
+								"133,140": "Name should have prefix '_'. (Rule 'Fields').",
+								"159,166": "Name should have prefix '_'. (Rule 'Fields').",
+								"189,200": "Name should have prefix '_'. (Rule 'Fields').",
+								"216,231": "Name should have prefix '_'. (Rule 'Fields')."
+							},
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "Assets/scripts/StateController.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1180,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								328,
+								328
+							]
+						],
+						"settings":
+						{
+							"oops":
+							{
+								"0,5": "Using directive is not used by code and can be removed safely.",
+								"1084,1089": "Parameter 'force' is never used",
+								"144,159": "Name should have prefix '_'. (Rule 'Fields').",
+								"177,180": "Name should have prefix '_'. (Rule 'Fields').",
+								"198,201": "Name should have prefix '_'. (Rule 'Fields').",
+								"228,239": "Name should have prefix '_'. (Rule 'Fields').",
+								"291,302": "Name should have prefix '_'. (Rule 'Fields').",
+								"344,356": "Name should have prefix '_'. (Rule 'Fields').",
+								"372,391": "Name should have prefix '_'. (Rule 'Fields').",
+								"407,417": "'AngOfSight' should start with a lower case letter. (Rule 'Fields')",
+								"433,438": "Name should have prefix '_'. (Rule 'Fields').",
+								"454,462": "Name should have prefix '_'. (Rule 'Fields').",
+								"480,489": "The private field 'nextState' is never assigned",
+								"526,527": "Initializing field by default value is redundant",
+								"590,595": "Method 'Start' has the same with 'Awake'"
+							},
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "Assets/Scripts/Transition.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 218,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/Unity3D/UnityC#.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 80.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "sublime.sublime-project",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 193,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								190,
-								190
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
-							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -281,20 +428,88 @@
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "Assets/scripts/StateController.cs",
+					"buffer": 4,
+					"file": "Assets/Scripts/Actions/MoveToTargets.cs",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 435,
+						"buffer_size": 730,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								435,
-								435
+								571,
+								580
+							]
+						],
+						"settings":
+						{
+							"oops":
+							{
+								"0,5": "Using directive is not used by code and can be removed safely.",
+								"201,209": "Name should have prefix '_'. (Rule 'Fields').",
+								"26,31": "Using directive is not used by code and can be removed safely."
+							},
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "Assets/Scripts/Actions/FleeFromTargets.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 678,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								678,
+								678
+							]
+						],
+						"settings":
+						{
+							"oops":
+							{
+								"633,634": "Unexpected symbol `if''",
+								"671,672": "Unexpected symbol }"
+							},
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "Assets/Scripts/Decision.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 133,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								130,
+								130
 							]
 						],
 						"settings":
@@ -305,7 +520,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
@@ -344,15 +559,19 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 102.0
+		"height": 261.0
 	},
 	"output.find_results":
 	{
 		"height": 0.0
 	},
-	"output.variable_get":
+	"output.unsaved_changes":
 	{
 		"height": 102.0
+	},
+	"output.variable_get":
+	{
+		"height": 201.0
 	},
 	"pinned_build_system": "",
 	"project": "sublime.sublime-project",
