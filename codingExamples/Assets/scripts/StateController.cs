@@ -28,6 +28,16 @@ public class StateController : MonoBehaviour
 		if(!aiActive)
 			return;
 		currentState.UpdateState(this);
-		
 	}
+	
+	public bool CheckIfCountDownElapsed(float duration)
+    {
+        stateTimeElapsed += Time.deltaTime;
+        return (stateTimeElapsed >= duration);
+    }
+
+    private void OnExitState()
+    {
+        stateTimeElapsed = 0;
+    }
 }
