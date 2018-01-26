@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu  (menuName = "PluggableAI/State")]
-public abstract class State : ScriptableObject
+public class State : ScriptableObject
 {
 	public int priorty;
 	public Action[] actions;
@@ -27,8 +27,8 @@ public abstract class State : ScriptableObject
     {
         for (int i = 0; i < transitions.Length; i++) 
         {
-            bool decisionSucceeded = transitions [i].decision.Decide (controller);
-
+            bool decisionSucceeded = transitions[i].decision.Decide (controller);
+            Debug.Log(decisionSucceeded);
             if (decisionSucceeded) 
                 controller.EqueueNextState(transitions[i].trueState);
             else 

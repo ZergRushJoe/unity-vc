@@ -17,7 +17,7 @@ public class MoveToTargets : Action
 	{
 		for(int i = 0; i < controller.seekTargets.Count; ++i)
 		{
-			Vector3 vectorToTarget = controller.currentLocation - controller.seekTargets[i].GetComponent<Transform>().position;
+			Vector3 vectorToTarget =  controller.seekTargets[i].GetComponent<Transform>().position - controller.currentLocation;
 			if(vectorToTarget.magnitude > maxForce)
 				controller.ApplyForce(Vector3.ClampMagnitude(vectorToTarget, maxForce));
 			else

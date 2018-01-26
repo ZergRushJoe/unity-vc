@@ -17,7 +17,7 @@ public class FleeFromTargets : Action
 	{
 		for(int i = 0; i < controller.fleeTargets.Count; ++i)
 		{
-			Vector3 vectorToTarget = controller.currentLocation - controller.seekTargets[i].GetComponent<Transform>().position;
+			Vector3 vectorToTarget = controller.currentLocation - controller.fleeTargets[i].GetComponent<Transform>().position;
 			Vector3 rawForce = Vector3.ClampMagnitude(vectorToTarget, 1/vectorToTarget.magnitude);
 			if(rawForce.magnitude > maxForce)
 				controller.ApplyForce(Vector3.ClampMagnitude(rawForce,maxForce));

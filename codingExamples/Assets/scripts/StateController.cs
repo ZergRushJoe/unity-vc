@@ -28,7 +28,7 @@ public class StateController : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-	
+		 currentLocation = gameObject.transform.position;
 	}
 	
 	// Update is called once per frame
@@ -37,8 +37,24 @@ public class StateController : MonoBehaviour
 		if(!aiActive)
 			return;
 		currentState.UpdateState(this);
+		move();
 	}
 	
+	private void move()
+	{
+		ApplyForce(Vector3.Scale(vel, new Vector3(-0.05f,-0.05f,-0.05f)));
+
+		if(vel.magnitude < .001 && acc.magnitude == 0)
+			vel = new Vector3(0,0,0);
+		else
+			vel += acc;
+		vel = Vector3.ClampMagnitude(vel, speed);
+		currentLocation += vel;
+
+		acc = new Vector3(0,0,0);
+
+		gameObject.transform.position = currentLocation;
+	}
 
 	public void EqueueNextState(State nextState)
 	{
@@ -54,7 +70,7 @@ public class StateController : MonoBehaviour
 
     public void ApplyForce(Vector3 force)
     {
-
+    	acc += force;
     }
 
     private void OnExitState()

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu  (menuName = "PluggableAI/Actions/FindTargets")]
 public class FindTargets : Action 
 {
 
@@ -22,7 +23,8 @@ public class FindTargets : Action
 			if(CheckInRange(inRange[i],controller))
 				inView.Add(inRange[i]);
 		}
-
+		Debug.Log(inRange.Count);
+		
 		controller.seekTargets.Clear();
 		controller.fleeTargets.Clear();
 
@@ -33,6 +35,7 @@ public class FindTargets : Action
 			else if(inView[i].tag == flee)
 				controller.fleeTargets.Add(inView[i]);
 		}
+		Debug.Log(inView.Count);
 	}
 
 	private List<GameObject> GetInRangeObjects(StateController controller)
