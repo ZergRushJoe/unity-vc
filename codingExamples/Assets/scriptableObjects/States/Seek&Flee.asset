@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Name: Seek&Flee
   m_EditorClassIdentifier: 
   priorty: 0
-  actions: []
+  actions:
+  - {fileID: 11400000, guid: 3d4fd03de1efaf4489a937a6a65c0562, type: 2}
   transitions: []
-  sceneGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  gizmoColor: {r: 0, g: 0, b: 0, a: 1}

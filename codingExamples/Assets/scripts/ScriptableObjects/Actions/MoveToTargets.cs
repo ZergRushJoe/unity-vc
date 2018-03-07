@@ -1,27 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu  (menuName = "PluggableAI/Actions/MoveToTargets")]
-public class MoveToTargets : Action
+public class MoveToTargets : Action 
 {
-
-	public float maxForce;
 
 	public override void Act(StateController controller)
 	{
-		ApplyMovementForce(controller);
+		Seek(controller);
 	}
 
-	private void ApplyMovementForce(StateController controller)
+	public override void DrawDebug( StateController controller)
 	{
-		for(int i = 0; i < controller.seekTargets.Count; ++i)
-		{
-			Vector3 vectorToTarget =  controller.seekTargets[i].GetComponent<Transform>().position - controller.currentLocation;
-			if(vectorToTarget.magnitude > maxForce)
-				controller.ApplyForce(Vector3.ClampMagnitude(vectorToTarget, maxForce));
-			else
-				controller.ApplyForce(vectorToTarget);
-		}
+		
+	}
+
+	private void Seek(StateController controller)
+	{
+        if (controller.agent != null &&
+         (controller.agent.remainingDistance <= controller.agent.stoppingDistance &&
+          !controller.agent.pathPending &&
+           controller.seekTargets.Count > 0 || 
+           controller.stateTimeElapsed % 500 == 0) ) 
+        {
+            controller.agent.destination =controller.seekTargets[0].transform.position;
+        }
 	}
 }

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,50 +9,57 @@ public class FindTargets : Action
 	public string seek;
 	public string flee;
 
+	public float minAngleBetween = 10;
+
 	public override void Act(StateController controller)
 	{
 		lookAhead(controller);
 	}
 
+	public override void DrawDebug( StateController controller)
+	{
+		int numberOfRays = (int)(controller.angOfSight/minAngleBetween);
+		var castPoint = controller.gameObject.transform;
+		
+		for(int i = 0; i < numberOfRays; ++i)
+		{
+			Gizmos.DrawRay(castPoint.position , Quaternion.AngleAxis(i*minAngleBetween - controller.angOfSight/2 , castPoint.up) * castPoint.forward*controller.lineOfSightDistance);
+		}
+	}
+
+
 	private void lookAhead(StateController controller)
 	{
-		var inRange = GetInRangeObjects(controller);
-		var inView = new List<GameObject>();
-		for(int i = 0; i<inRange.Count;++i)
-		{
-			if(CheckInRange(inRange[i],controller))
-				inView.Add(inRange[i]);
-		}
-		Debug.Log(inRange.Count);
+		List<GameObject> inRange = GetInRangeObjects(controller);
 		
 		controller.seekTargets.Clear();
 		controller.fleeTargets.Clear();
-
-		for(int i = 0; i<inView.Count;++i)
+		inRange.ForEach( obj => 
 		{
-			if(inView[i].tag == seek)
-				controller.seekTargets.Add(inView[i]);
-			else if(inView[i].tag == flee)
-				controller.fleeTargets.Add(inView[i]);
-		}
-		Debug.Log(inView.Count);
+			if(obj.tag == seek)
+				controller.seekTargets.Add(obj);
+			if(obj.tag == flee)
+				controller.fleeTargets.Add(obj);
+		});
 	}
 
 	private List<GameObject> GetInRangeObjects(StateController controller)
 	{
-		Collider[] hitColliders = Physics.OverlapSphere(controller.currentLocation, controller.lineOfSightDistance);
-		var inRange = new List<GameObject>();
-		for(int i = 0; i < hitColliders.Length;++i)
+		int numberOfRays = (int)(controller.angOfSight/minAngleBetween);
+		var castPoint = controller.gameObject.transform;
+		var objsHit = new List<GameObject>();
+ 		RaycastHit hit;
+ 		Ray test;
+		for(int i = 0; i < numberOfRays; ++i)
 		{
-			inRange.Add(hitColliders[i].gameObject);
+			test = new Ray(castPoint.position , Quaternion.AngleAxis(i*minAngleBetween - controller.angOfSight/2 , castPoint.up) * castPoint.forward);
+			if(Physics.Raycast( test , out hit ,controller.lineOfSightDistance) )
+			{
+				if( hit.collider.tag == seek ||hit.collider.tag == flee )
+					objsHit.Add(hit.collider.gameObject);
+			}
 		}
-		return inRange;
-	}
-
-	private bool CheckInRange(GameObject inRange, StateController controller)
-	{
-		var vectorToTarget = (controller.currentLocation - inRange.transform.position).normalized;
-		return Vector3.Angle(controller.gameObject.transform.forward,vectorToTarget) < controller.AngOfSight/2;
+		return objsHit;
 	}
 
 }

@@ -1,76 +1,77 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class StateController : MonoBehaviour 
 {
-	public Vector3 currentLocation;
-	public Vector3 vel;
-	public Vector3 acc;
-	public List<GameObject> seekTargets = new List<GameObject>();
-	public List<GameObject> fleeTargets = new List<GameObject>();
+
 
 	public State currentState;
 	public float lineOfSightDistance;
-	public float AngOfSight;
-	public float speed;
-
+	public float angOfSight;
+	public GameObject playerObject;
 	public bool aiActive;
 
+	[HideInInspector] public Vector3 target;
+	[HideInInspector] public NavMeshAgent agent; 
+	[HideInInspector] public List<GameObject> seekTargets = new List<GameObject>();
+	[HideInInspector] public List<GameObject> fleeTargets = new List<GameObject>();
+
+
+
 	private State nextState;
-	private double stateTimeElapsed = 0;
+	public double stateTimeElapsed = 0;
 
 	void Awake()
 	{
+		agent = GetComponent<NavMeshAgent>();
+		if(agent == null) return;
 
+        if (aiActive) 
+        {
+            agent.enabled = true;
+        } else 
+        {
+            agent.enabled = false;
+        }
 	}
 
 	// Use this for initialization
 	void Start () 
 	{
-		 currentLocation = gameObject.transform.position;
+
 	}
-	
+
 	// Update is called once per frame
 	void Update () 
 	{
 		if(!aiActive)
 			return;
 		currentState.UpdateState(this);
-		move();
 	}
-	
-	private void move()
-	{
-		ApplyForce(Vector3.Scale(vel, new Vector3(-0.05f,-0.05f,-0.05f)));
 
-		if(vel.magnitude < .001 && acc.magnitude == 0)
-			vel = new Vector3(0,0,0);
-		else
-			vel += acc;
-		vel = Vector3.ClampMagnitude(vel, speed);
-		currentLocation += vel;
-
-		acc = new Vector3(0,0,0);
-
-		gameObject.transform.position = currentLocation;
-	}
+	void OnDrawGizmos()
+    {
+        if (currentState != null) 
+        {
+            currentState.DrawDebug(this);
+        }
+    }
 
 	public void EqueueNextState(State nextState)
 	{
-		if(nextState != currentState && nextState.priorty >= currentState.priorty)
+		if(nextState != currentState)
+		{
 			currentState = nextState;
+			stateTimeElapsed = 0;
+		}
 	}
 
 	public bool CheckIfCountDownElapsed(float duration)
     {
         stateTimeElapsed += Time.deltaTime;
         return (stateTimeElapsed >= duration);
-    }
-
-    public void ApplyForce(Vector3 force)
-    {
-    	acc += force;
     }
 
     private void OnExitState()

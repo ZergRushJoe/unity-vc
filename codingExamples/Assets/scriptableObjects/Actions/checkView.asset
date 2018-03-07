@@ -9,7 +9,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c60a18cd3be3f1248bad3b3b2be66b13, type: 3}
-  m_Name: seekPlayer
+  m_Name: checkView
   m_EditorClassIdentifier: 
-  seek: 
+  seek: Player
   flee: 
+  minAngleBetween: 5
